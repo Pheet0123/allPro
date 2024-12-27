@@ -1,0 +1,9 @@
+*{
+    margin: 0 ;
+    padding: 0;
+}
+body{
+    background: url("img/3f73c5dd-ba8f-4dcc-b2c5-0e5a380d2664.jfif") no-repeat  ;
+    background-position: center;
+    background-size: cover ;
+}

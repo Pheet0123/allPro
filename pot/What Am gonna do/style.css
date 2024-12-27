@@ -1,0 +1,61 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url(bg.gif);
+    color: #000;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.activity-box {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+}
+
+.activity-box.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+button {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+@media (max-width: 399px){
+    h1{
+        font-size: 40px;
+    }
+    .activity-box{
+
+        font-size: 20px;
+    }
+}

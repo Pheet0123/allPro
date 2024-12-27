@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <h1>
+                เว็บไซต์ Pasathorn-web มีระบบคำถามที่ช่วยตรวจสอบว่าผู้ใช้งานได้ลองเล่นหรือสำรวจโปรเจกต์ต่างๆ ที่อยู่ในเว็บไซต์ครบถ้วนหรือยัง
+            </h1>
+        </div>
+        <div class="box">
+            <div class="quiz-container">
+                <p id="question"></p>
+            </div>
+            <div id="options"></div>
+            <div id="score"></div>
+        </div>
+    </div>
+    <script>let questions = [
+        {
+            question: "1. เว็บไซต์ที่พึ่งชมไปมีชื่อว่าอะไร?",
+            options: ["Pasathon-web", "Pasathorn-web ", "PenCraft-web"],
+            correctAnswer: 1
+        },
+        {
+            question: "2. เว็บไซต์นี้สร้างขึ้นเพื่อจุดประสงค์อะไร?",
+            options: ["จะทำเว็บไปจีบสาว", "นำผลงานที่ได้ทำขึ้นมาเพิ่อไปยื่นพอต คณะsit ทีผมอยากเข้ามากที่สุด", "อยากพัฒนาตนเอง"],
+            correctAnswer: 1
+        },
+        {
+            question: "3. เว็บที่ผมได้สร้างส่วนใหญ่ใช่ภาษาอะไรเขียน ",
+            options: ["html css js", "Python", "VB"],
+            correctAnswer: 0
+        },
+        {
+            question: "4. PenCraft เว็บไซต์นี้เกี่ยวกับอะไร?",
+            options: ["เว็บที่เกี่ยวกับการการขายของทั้วไป", "เกี่ยวกับการขายปากกาตามท้องตลาด", "เกี่ยวกับการขายปากกาที่สามารถออกแบบได้ตามใจลูกค้า"],
+            correctAnswer: 2
+        },
+        {
+            question: "5. เว็บไซต์ Pasathorn-web มีแรงบัลดานใจการออกแบบคลายเว็บใด?",
+            options: ["เว็บ Open House คณะวิศวกรรมศาสตร์ ของ มจธ", "เว็บ Facebook", "เว็บ IG"],
+            correctAnswer: 0
+        },
+        {
+            question: "6.บ้านของผู้สร้างเว็บอยู่ใกล้มหาวิทยาลัยอะไร",
+            options: ["มหาวิทยาลัยเกษตรศาสตร์", "สถาบันเทคโนโลยีคุณทหารลาดกระบัง", "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (บางขุนเทียน)"],
+            correctAnswer: 2
+        },
+        {
+            question: "7.คาดว่าผู้สร้างเว็บใช้ระยะเวลานานเท่าใดในการพัฒนา เว็บPasathorn-web",
+            options: ["1ปี", "2-3เดือน ", "10 วัน"],
+            correctAnswer: 1
+        },
+        {
+            question: "8.คุณชอบเว็บนี้มากหรือไม่",
+            options: ["ไม่ชอบเลย", "ชอบ", "ชอบมากจนต้องรับเข้า คณะSIT เลย"],
+            correctAnswer: 2
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function loadQuestion() {
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        
+        questionElement.textContent = questions[currentQuestion].question;
+        optionsElement.innerHTML = '';
+
+        questions[currentQuestion].options.forEach((option, index) => {
+            const button = document.createElement("button");
+            button.textContent = option;
+            button.classList.add("option");
+            button.onclick = () => checkAnswer(index);
+            optionsElement.appendChild(button);
+        });
+    }
+
+    function checkAnswer(selectedOption) {
+        if (selectedOption === questions[currentQuestion].correctAnswer) {
+            score++;
+        }
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("question").textContent = "";
+        document.getElementById("options").innerHTML = "";
+        const scoreElement = document.getElementById("score");
+        scoreElement.textContent = `Your score: ${score} / ${questions.length}`;
+    }
+
+    window.onload = loadQuestion;</script>
+</body>
+</html>
